@@ -6,7 +6,7 @@ using namespace std;
 int primes[MAX];
 
 //Basic sieve of eratosthenes to generate primes upto MAX
-//Complexity ==> O(nlglgn)
+//Complexity ==> O(nlglgn).
 void sieve()
 {
 	memset(primes,1,sizeof(primes));

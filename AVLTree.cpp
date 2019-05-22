@@ -12,7 +12,7 @@ typedef struct Node
 
 int height(Node *n)
 {
-	//Just to make sure calculations are right NULL node is at -1 level
+  //Just to make sure calculations are right NULL node is at -1 level
   if(n==NULL)
      return -1;
   return n->height;
@@ -20,16 +20,15 @@ int height(Node *n)
 
 int balance(Node *root)
 {
-	//If node is empty we assert that its balanced
-	if(root==NULL)
-		return 0;
+  //If node is empty we assert that its balanced
+  if(root==NULL)
+    return 0;
     
-	//Note: Here we return the subtraction not the modulas!
-	//This helps us do decide weather its left heavy or right heavy
+  //Note: Here we return the subtraction not the modulas!
+  //This helps us do decide weather its left heavy or right heavy
   return height(root->left)-height(root->right);
 }
 
-//
 //      root
 //       /
 //      y
@@ -95,11 +94,11 @@ Node* insert( Node *root, int id )
 void preorder(Node *root)
 {
   if(root!=NULL)
-	{
-   	preorder(root->left);
-		cout<<root->id<<" ";
-   	preorder(root->right);
-	}
+  {
+    preorder(root->left);
+    cout<<root->id<<" ";
+    preorder(root->right);
+  }
 }
 
 int main()

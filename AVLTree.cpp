@@ -1,4 +1,4 @@
-// Example program
+// Brief implementation of AVL Trees aka Self Balancing Trees
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -13,9 +13,9 @@ typedef struct Node
 int height(Node *n)
 {
 	//Just to make sure calculations are right NULL node is at -1 level
-    if(n==NULL)
-        return -1;
-    return n->height;
+  if(n==NULL)
+     return -1;
+  return n->height;
 }
 
 int balance(Node *root)
@@ -23,9 +23,10 @@ int balance(Node *root)
 	//If node is empty we assert that its balanced
 	if(root==NULL)
 		return 0;
+    
 	//Note: Here we return the subtraction not the modulas!
 	//This helps us do decide weather its left heavy or right heavy
-    return height(root->left)-height(root->right);
+  return height(root->left)-height(root->right);
 }
 
 //
@@ -34,7 +35,6 @@ int balance(Node *root)
 //      y
 //     /  \
 //    z    T2
-//
 Node* leftrotate(Node *root)
 {
     Node *y=root->right;
@@ -69,8 +69,7 @@ Node* insert( Node *root, int id )
     else
         return root;
     
-    root->height=max(height(root->left),height(root->right))+1;
-    
+    root->height=max(height(root->left),height(root->right))+1;  
     int b = balance(root);
     
     if(b>1 && id<root->left->id)
@@ -81,25 +80,25 @@ Node* insert( Node *root, int id )
     
     if(b>1 && id>root->left->id)
     {
-        root->left=leftrotate(root->left);
-        return rightrotate(root);
+       root->left=leftrotate(root->left);
+       return rightrotate(root);
     }
     
     if(b<-1 && id<root->right->id)
     {
-        root->right=rightrotate(root->right);
-        return leftrotate(root);
+       root->right=rightrotate(root->right);
+       return leftrotate(root);
     }
     return root;
 }
 
 void preorder(Node *root)
 {
-    if(root!=NULL)
+  if(root!=NULL)
 	{
-    	preorder(root->left);
+   	preorder(root->left);
 		cout<<root->id<<" ";
-    	preorder(root->right);
+   	preorder(root->right);
 	}
 }
 
@@ -109,7 +108,6 @@ int main()
   Node *root=NULL;
   for(int i=0;i<(sizeof(arr)/sizeof(arr[0]));++i)
     root=insert(root,arr[i]);
-
   preorder(root);
   return 0;    
 }

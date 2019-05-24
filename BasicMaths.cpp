@@ -9,16 +9,16 @@ int primes[MAX];
 //Complexity ==> O(nlglgn).
 void sieve()
 {
-	memset(primes,1,sizeof(primes));
-	primes[0] = primes[1] = 0;
-	for(int i=2;i*i<MAX;++i)
-	{
-		if(primes[i])
-		{
-			for(int j=i;j*i<MAX;++j)
-				primes[j*i]=0;
-		}
-	}
+  memset(primes,1,sizeof(primes));
+  primes[0] = primes[1] = 0;
+  for(int i=2;i*i<MAX;++i)
+  {
+    if(primes[i])
+    {
+	for(int j=i;j*i<MAX;++j)
+	  primes[j*i]=0;
+    }
+  }
 }
 
 /**

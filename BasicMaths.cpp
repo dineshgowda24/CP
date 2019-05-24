@@ -20,3 +20,36 @@ void sieve()
 		}
 	}
 }
+
+/**
+Eculidiean Algorithm to find GCD of 2 number 
+T(n) = O(logmin(a,b))
+**/
+long long gcd(long long a, long long b)
+{
+    while(b)
+    {
+        a%=b;
+        swap(a,b);
+    }
+    return a;
+}
+
+/**
+ Recursive Eculidiean Algorithm to find GCD of 2 number 
+T(n) = O(logmin(a,b))
+**/
+long long gcd_r(long long a, long long b)
+{
+   if(b==0)
+     return a;
+   return gcd(b,a%b);
+}
+
+/**
+ T(n) = O(logmin(a,b)) + O(1) ==> O(logmin(a,b))
+**/
+long long lcm(long long a, long long b)
+{
+  return (a/gcd(a,b))*b;
+}

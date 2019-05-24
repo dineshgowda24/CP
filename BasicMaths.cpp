@@ -53,3 +53,22 @@ long long lcm(long long a, long long b)
 {
   return (a/gcd(a,b))*b;
 }
+
+/**
+Function to generate Bezout's Coefficients x and y
+Function follows Extended Euclidiean Algorithm
+T(n) = O(logmin(a,b)) 
+Its same as gcd, we get coefficients for free ie O(1), just 1 multiplication.
+**/
+int gcd(int a, int b, int & x, int & y) {
+    if (a == 0) {
+        x = 0;
+        y = 1;
+        return b;
+    }
+    int x1, y1;
+    int d = gcd(b % a, a, x1, y1);
+    x = y1 - (b / a) * x1;
+    y = x1;
+    return d;
+}

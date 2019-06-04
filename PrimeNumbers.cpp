@@ -5,6 +5,7 @@ using namespace std;
 #define vlli vector<long long int>
 #define pb push_back
 #define ll long long
+
 void seive(ll limit, vlli &prime)
 {
 	bool m[limit+1];

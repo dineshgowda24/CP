@@ -82,9 +82,10 @@ void segmentedseive(ll n)
 Algorithm to generate prime numbers upto LMAX in O(n),
 The Sieve takes O(nlglgn).
 We init an array lp of size LMAX to 0.
-if lp[i]==0 we add it to pr list of primes.
+if lp[i]==0 we add i to pr list of primes.
 We multiply i with primes in pr and set lp[i*{pr[0..n]}=pr[0..n]
 Space Complexity O( n + n/lgn ) => Very Bad.
+One advantage is that : End of computation we have min prime factor of all the composite numbers upto LMAX
 **/
 
 #define LMAX 100000

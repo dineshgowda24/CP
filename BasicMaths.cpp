@@ -72,3 +72,22 @@ int gcd(int a, int b, int & x, int & y) {
     y = x1;
     return d;
 }
+
+/**
+Function is used to multiply 2 big intergers and return mod p
+i.e a*b mod p
+Function takes care of overflow during multiplications.
+**/
+ll bigmul(ll a, ll b, ll p)
+{
+	ll res=0;
+	a%=p;
+	while(b)
+	{
+		if(b&1)
+			res = (res+a)%p;
+		a=((2%p)*(a%p))%p;
+		b>>=1;
+	}
+	return res;
+}

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #define MAX 100
+#define ll long long
 using namespace std;
 
 int primes[MAX];

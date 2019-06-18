@@ -28,6 +28,7 @@ void print_graph(vi *g, int v)
 /**
 Class representation of an unweighted and undirected graph
 bfs => breath first search
+dfs => depth first search
 **/
 class Graph
 {
@@ -67,6 +68,26 @@ class Graph
 					}
 				}
 			}
+		}
+	
+		void dfs_util(bool *visited, int s)
+		{
+			visited[s]=1;
+			cout<<s<<" ";
+			
+			for(auto i=adj[s].begin();i!=adj[s].end();++i)
+				if(!visited[*i])
+					dfs_util(visited,*i);
+		}
+		
+		/**
+		Depth First Traversal of Tree
+		**/
+		void dfs(int s=0)
+		{
+			bool visited[v];
+			memset(visited,0,sizeof(visited));
+			dfs_util(visited,s);
 		}
 };
 

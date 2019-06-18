@@ -3,6 +3,7 @@
 #define pb push_back
 #define endl "\n"
 #define li list<int>
+#define quei queue<int>
 using namespace std;
 
 //Unweighted and undirected
@@ -23,6 +24,51 @@ void print_graph(vi *g, int v)
 		cout<<endl;
 	}
 }
+
+/**
+Class representation of an unweighted and undirected graph
+bfs => breath first search
+**/
+class Graph
+{
+	int v;
+	li *adj=NULL;
+	public:
+		Graph(int v)
+		{
+			this->v=v;
+			adj = new li[v];
+		}
+		 
+		void add_edge(int v, int u)
+		{
+			adj[v].pb(u);
+			adj[u].pb(v);
+		}
+		
+		void bfs(int s=0)
+		{
+			int visited[v];
+			memset(visited,0,sizeof(visited));
+			quei q;
+			q.push(s);
+			visited[s]=1;
+			while(!q.empty())
+			{
+				s=q.front();
+				cout<<s<<" ";
+				q.pop();
+				for(auto i=adj[s].begin();i!=adj[s].end();++i)
+				{
+					if(!visited[*i])
+					{
+						visited[*i]=1;
+						q.push(*i);
+					}
+				}
+			}
+		}
+};
 
 int main() {
 	int v=5;

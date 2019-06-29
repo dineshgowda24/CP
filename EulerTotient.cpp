@@ -6,7 +6,7 @@ typedef long l;
 
 ll phi[MAX+1];
 /**
-Function to calculate phi upto MAX.
+Function to calculate phi upto MAX. 
 Calculation is done by the def of Euler Totient Function phi(n) = n*(i-1)/i | where i divides n
 **/
 void etf()

@@ -70,7 +70,31 @@ class Graph{
 				}
 			}
 		}
+		
+		//By default the node rooted at 0 is assumned to be level 0
+		//levels is array of size V, which would indicate the levels of all the node
+		void bfs(int *levels, int i=0){
+			bool visited[V];
+			memset(visited, 0, sizeof(visited));
+			queue<int> q;
+			q.push(i);
+			visited[i] = 1;
+			levels[i] = 0;
+			
+			while(!q.empty()){
+				int node = q.front();
+				q.pop();
+				for(auto it = adj[node].begin();it!=adj[node].end();++it){
+					if(!visited[it->first]){
+						levels[it->first] = levels[node] + 1;
+						visited[it->first] = 1;
+						q.push(it->first);
+ 					}
+				}
+			}
+		}
 };
+
 int main() {
 	// your code goes here
 	Graph g(5);
@@ -86,5 +110,10 @@ int main() {
 	g.bfs();
 	cout<<endl;
 	g.dfs();
+	int levels[5];
+	g.bfs(levels);
+	cout<<endl;
+	for(int i=0;i<5;++i)
+		cout<<"Vertex "<<i<<" is at level "<<levels[i]<<endl;
 	return 0;
 }
